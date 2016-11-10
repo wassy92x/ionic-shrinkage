@@ -2,7 +2,6 @@ import {
   Directive,
   ElementRef,
   Input,
-  HostBinding,
   Renderer,
   AfterViewInit,
   OnDestroy,
@@ -33,6 +32,7 @@ export class Shrinkage implements AfterViewInit, OnDestroy{
   private headerHeight: number;
   private lastScrollTop: number = 0;
   private lastHeaderTop: number = 0;
+  private showAtTop: number = 0;
 
   // I'm using this because I don't know when the different platforms decide
   // if StatusBar.isVisible is true/false; is it immediate or after animation?
@@ -74,6 +74,8 @@ export class Shrinkage implements AfterViewInit, OnDestroy{
 
   // Might end up separate shrinkageHeader, shrinkageFooter
   @Input('shrinkage') content: Content;
+
+  @Input('showAlways') showAlways: boolean;
 
   constructor(
     private el: ElementRef,
@@ -126,6 +128,14 @@ export class Shrinkage implements AfterViewInit, OnDestroy{
     // }, 500);
 
     // console.info(`resized: new height = `, this.headerHeight);
+
+    this.showAtTop = this.headerHeight / this.showParallaxFactor;
+
+    // TODO
+    // This is a workaround, so that a second header gets completely hidden
+    // Introduce global variable or sth which counts the heights.
+    if (!this.showAlways)
+      this.headerHeight += 56;
   }
 
   render(ts) {
@@ -222,23 +232,25 @@ export class Shrinkage implements AfterViewInit, OnDestroy{
          * push the header away without it sneaking back.
          */
 
-        // Is 40 the right height (for iOS)? If it shows too early it looks weird.
-        // When animation is available, it will look better too.
-        if (!this.isStatusBarShowing && this.showingHeight > 40) {
-          // !StatusBar.isVisible
+        if (this.showAlways || this.scrollTop <= this.showAtTop) {
+          // Is 40 the right height (for iOS)? If it shows too early it looks weird.
+          // When animation is available, it will look better too.
+          if (!this.isStatusBarShowing && this.showingHeight > 40) {
+            // !StatusBar.isVisible
 
-          if (!this.pauseForBarAnimation) {
-            
-            this.pauseForBarAnimation = true;
-            this.isStatusBarShowing = true;
-            StatusBar.show();
-            
-            setTimeout(() => {
-              this.pauseForBarAnimation = false;
-            }, this.pauseForBarDuration);
+            if (!this.pauseForBarAnimation) {
+
+              this.pauseForBarAnimation = true;
+              this.isStatusBarShowing = true;
+              StatusBar.show();
+
+              setTimeout(() => {
+                this.pauseForBarAnimation = false;
+              }, this.pauseForBarDuration);
+
+            }
 
           }
-
         }
 
         // Reveal the header with the faster showParallaxFactor 
