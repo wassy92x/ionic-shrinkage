@@ -2,7 +2,7 @@
   "name": "ionic-shrinkage2",
   "version": "0.0.2",
   "description": "Directive for headers in Ionic 2 which causes them to shrink/hide when scrolling up, and reveal when scrolling down.",
-  "author": "Patrick McDonald <me@patrickmcd.com>",
+  "author": "Fabian Wassenhoven <development@fabian.alias.wassy.de>",
   "license": "ISC",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/patrickmcd/ionic-shrinkage.git"
+    "url": "git+https://github.com/wassy92x/ionic-shrinkage"
   },
   "bugs": {
-    "url": "https://github.com/patrickmcd/ionic-shrinkage/issues"
+    "url": "https://github.com/wassy92x/ionic-shrinkage/issues"
   },
   "keywords": [
     "header",
@@ -49,6 +49,5 @@
     "zone.js": "0.6.12",
     "typescript": "^1.7.3"
   },
-  "homepage": "https://github.com/patrickmcd/ionic-shrinkage#readme",
   "dependencies": {}
 }
