@@ -8,8 +8,5 @@ dist/
 *.log
 *.tgz
 
-*.js.map
-*.js
-
 *.log
 *.tgz
