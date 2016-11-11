@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "module": "commonjs",
-    "target": "ES5",
+    "target": "es5",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "declaration": true,
+    "declaration": false,
     "removeComments": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "noEmitHelpers": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "stripInternal": true
   },
   "files": [
     "typings/index.d.ts",

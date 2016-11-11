@@ -95,7 +95,7 @@ export class Shrinkage implements AfterViewInit, OnDestroy{
     // console.log("ngAfterViewInit in Directive");
 
     // This listener only updates values. It doesn't do any rendering.
-    this.content.addScrollListener((event) => {
+    this.content.addScrollListener((event: any) => {
       this.onPageScroll(event);
     });
 
@@ -138,7 +138,7 @@ export class Shrinkage implements AfterViewInit, OnDestroy{
       this.headerHeight += 56;
   }
 
-  render(ts) {
+  render(ts: number) {
 
     // Need a better example of doing this with a zone. This doesn't appear to
     // improve things. Maybe we'll get some magic improvments with Beta.12.
@@ -167,7 +167,7 @@ export class Shrinkage implements AfterViewInit, OnDestroy{
   // }
 
 
-  private onPageScroll(event) {
+  private onPageScroll(event: any) {
     // console.log(`e`, event.target.scrollTop);
     this.scrollTop = event.target.scrollTop;
 
@@ -179,7 +179,7 @@ export class Shrinkage implements AfterViewInit, OnDestroy{
   }
 
 
-  calculateRender(timestamp) {
+  calculateRender(timestamp: number) {
 
     // Gotta be > 0 otherwise we aren't scrolling yet, or are rubberbanding.
     // If scrollTop and lastScrollTop are the same, we've stopped scrolling
@@ -251,23 +251,22 @@ export class Shrinkage implements AfterViewInit, OnDestroy{
             }
 
           }
+
+          // Reveal the header with the faster showParallaxFactor
+          this.lastHeaderTop += (this.scrollChange * this.showParallaxFactor);
+
+          // The header can't go past (greater) zero. We should never see any
+          // gaps above the header, even when rubberbanding.
+          if (this.lastHeaderTop <= 0) {
+            this.lastHeaderTop = 0;
+          }
+
+          // console.group(`\\/ Going DOWN \\/`);
+          //   console.log(`scrollChange`, this.scrollChange);
+          //   console.log(`scrollTop`, this.scrollTop);
+          //   console.log(`lastTop`, this.lastHeaderTop);
+          // console.groupEnd();
         }
-
-        // Reveal the header with the faster showParallaxFactor 
-        this.lastHeaderTop += (this.scrollChange * this.showParallaxFactor);
-
-        // The header can't go past (greater) zero. We should never see any
-        // gaps above the header, even when rubberbanding.
-        if (this.lastHeaderTop <= 0) {
-          this.lastHeaderTop = 0;
-        }
-
-        // console.group(`\\/ Going DOWN \\/`);
-        //   console.log(`scrollChange`, this.scrollChange);
-        //   console.log(`scrollTop`, this.scrollTop);
-        //   console.log(`lastTop`, this.lastHeaderTop);
-        // console.groupEnd();
-
 
       } else {
         // prevented by scrollTop !== lastScrollTop above, shouldn't happen
