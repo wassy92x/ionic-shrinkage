@@ -27,7 +27,7 @@ export declare class Shrinkage implements AfterViewInit, OnDestroy {
     ngOnDestroy(): void;
     resize(): void;
     render(ts: any): void;
-    showingHeight: number;
+    readonly showingHeight: number;
     private onPageScroll(event);
     calculateRender(timestamp: any): void;
 }
