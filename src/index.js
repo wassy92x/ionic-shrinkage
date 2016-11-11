@@ -3,4 +3,3 @@ export * from './shrinkage.directive';
 export default {
     directives: [Shrinkage]
 };
-//# sourceMappingURL=index.js.map

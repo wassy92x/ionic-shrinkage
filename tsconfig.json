@@ -1,26 +1,31 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "noImplicitAny": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "outDir": "dist",
-    "sourceMap": true,
-    "removeComments": true,
-    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "sourceMap": true,
     "lib": [
-      "es2015",
-      "dom"
-    ]
+      "dom",
+      "es2015"
+    ],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "es5",
+    "outDir": "dist"
   },
-  "angularCompilerOptions": {
-    "genDir": ".tmp",
-    "debug": false,
-    "skipMetadataEmit": false
-  },
-  "include": [
-    "src/index.ts"
-  ]
+  "files": [
+    "src/index"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "compileOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }

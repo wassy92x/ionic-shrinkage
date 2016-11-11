@@ -1,6 +1,6 @@
 import { Shrinkage } from './shrinkage.directive';
 export * from './shrinkage.directive';
-export default {
-    directives: [Shrinkage]
+declare var _default: {
+    directives: typeof Shrinkage[];
 };
-//# sourceMappingURL=index.js.map
+export default _default;
