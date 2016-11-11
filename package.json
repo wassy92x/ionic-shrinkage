@@ -1,5 +1,5 @@
 {
-  "name": "ionic-shrinkage2",
+  "name": "ionic-shrinkage",
   "version": "0.0.2",
   "description": "Directive for headers in Ionic 2 which causes them to shrink/hide when scrolling up, and reveal when scrolling down.",
   "author": "Fabian Wassenhoven <development@fabian.alias.wassy.de>",
