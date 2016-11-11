@@ -18,6 +18,21 @@ export declare class Shrinkage implements AfterViewInit, OnDestroy {
     private scrollChange;
     private pastBottom;
     private lastTopFloored;
+    /**
+     * TODO: Make this parallax value a set-able directive?
+     *
+     * showParallaxFactor is the rate at which the header comes back into view.
+     * Then there's a hideParallaxFactor (which is always a slower rate).
+     * This guarantees that, even with whatever rounding that might happen, the
+     * header will be able to come completely back into view.
+     *
+     * But from a UX standpoint, showing the header (and other controls) is a
+     * more important end than hiding them; hiding them is a bonus to have
+     * more screen real estate, but showing them is a necessity to interact with
+     * the app. Bringing back the controls into view might be the specific purpose
+     * of the scroll action. A quicker show animation addresses this,
+     * while keeping a more gradual, puroposful, and noticeable hiding animation.
+     */
     private showParallaxFactor;
     private hideParallaxFactor;
     content: Content;
