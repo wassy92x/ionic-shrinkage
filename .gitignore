@@ -6,8 +6,5 @@ node_modules/
 *.log
 *.tgz
 
-*.js.map
-*.js
-
 *.log
 *.tgz
