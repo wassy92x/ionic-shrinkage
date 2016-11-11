@@ -7,7 +7,7 @@
     "emitDecoratorMetadata": true,
     "outDir": "dist",
     "sourceMap": true,
-    "removeComments": false,
+    "removeComments": true,
     "moduleResolution": "node",
     "declaration": true,
     "lib": [
